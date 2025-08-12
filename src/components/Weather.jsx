@@ -61,10 +61,20 @@ export default function Weather() {
         </div>
       )
     }
+
+    const iconCode = weather.weather[0].icon
+    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`
+    const temp = Math.round(weather.main.temp)
+    const isBreezy = temp < 29
+
     return (
-      <div className="bg-white rounded-lg shadow p-4">
+      <div className={`rounded-lg shadow p-4 ${isBreezy ? "bg-blue-200" : "bg-orange-200"}`}>
         <h2 className="text-lg font-semibold mb-2">{weather.name}</h2>
-        <p className="text-4xl font-bold">{Math.round(weather.main.temp)}°C</p>
+        <div className="flex items-center justify-between">
+          <p className="text-5xl font-bold">{Math.round(weather.main.temp)}°C
+          </p>
+          <img src={iconUrl} alt={weather.weather[0].description} className="w-20 h-20 object-contain self-center"/>
+        </div>
         <p className="text-sm capitalize">{weather.weather[0].description}</p>
       </div>
     )

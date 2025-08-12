@@ -13,10 +13,6 @@ export default function Dashboard() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <Weather />
                 <ToDo />
-                {/* <div className="bg-white rounded-lg shadow p-4">
-                    <h2 className="text-lg font-semibold mb-2">Widget title</h2>
-                    <p className="text-gray-500 text-sm">widget content goes here</p>
-                </div> */}
                 <News />
             </div>
         </div>
