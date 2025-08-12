@@ -44,7 +44,13 @@ export default function Weather() {
     if (loading) {
       return (
         <div className="bg-white rounded-lg shadow p-4">
-          <p className="text-gray-500 text-sm">Loading weather...</p>
+          <h2 className="text-lg font-medium">Weather
+            <div className="flex justify-center items-center py-6 space-x-2">
+                <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+                <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+                <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></span>
+            </div>
+          </h2>
         </div>
       )
     }
@@ -56,7 +62,7 @@ export default function Weather() {
       )
     }
     return (
-      <div className="bg-blue-50 rounded-lg shadow p-4">
+      <div className="bg-white rounded-lg shadow p-4">
         <h2 className="text-lg font-semibold mb-2">{weather.name}</h2>
         <p className="text-4xl font-bold">{Math.round(weather.main.temp)}°C</p>
         <p className="text-sm capitalize">{weather.weather[0].description}</p>
