@@ -3,29 +3,38 @@ import { useState, useEffect } from "react";
 export default function TodoList() {
     const [tasks, setTasks] = useState([])
     const [newTask, setNewTask] = useState("") 
+    const [loaded, setLoaded] = useState(false)
+
     useEffect(() => {
         const saved = localStorage.getItem("tasks")
         if (saved) setTasks(JSON.parse(saved))
+        setLoaded(true)
     }, []) 
+
     useEffect(() => {
-        localStorage.setItem("tasks", JSON.stringify(tasks))
-    }, [tasks])    
+        if (loaded) {
+            localStorage.setItem("tasks", JSON.stringify(tasks))
+        }
+    }, [tasks, setLoaded])    
+
     const addTask = () => {
         if (!newTask.trim()) return
         setTasks([...tasks, { text: newTask, done: false }])
         setNewTask("")
     };  
+
     const toggleTask = (index) => {
         const updated = [...tasks]
         updated[index].done = !updated[index].done
         setTasks(updated)
     }  
+
     const deleteTask = (index) => {
         setTasks(tasks.filter((_, i) => i !== index))
     }
 
     return (
-        <div className="bg-white rounded-xl shadow p-4 flex flex-col h-full">
+        <div className="bg-white rounded-xl shadow p-4">
             <h2 className="text-lg font-semibold mb-3">To-Do List</h2>   
             <div className="flex gap-2 mb-4">
                 <input
