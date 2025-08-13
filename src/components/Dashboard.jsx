@@ -1,6 +1,7 @@
 import Weather from "./Weather"
 import ToDo from "./ToDo"
 import News from "./News"
+import CurrencyExchange from "./CurrencyExchange"
 
 export default function Dashboard() {
     return (
@@ -14,6 +15,7 @@ export default function Dashboard() {
                 <Weather />
                 <ToDo />
                 <News />
+                <CurrencyExchange />
             </div>
         </div>
     )
